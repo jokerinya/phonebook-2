@@ -22,7 +22,7 @@ cursor = connection.cursor()
 # Create P table within sqlite db.
 def init_phonebook_db():
     phonebook_table = """
-    CREATE TABLE IF NOT EXISTS phonebook.phonebook(
+    CREATE TABLE IF NOT EXISTS phonebook (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     number VARCHAR(100) NOT NULL,
