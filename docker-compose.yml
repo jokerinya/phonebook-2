@@ -6,7 +6,7 @@ services:
         volumes:
           - /my/own/datadir:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: R1234r
+            MYSQL_ROOT_PASSWORD: Clarusway
             MYSQL_DATABASE: phonebook
             MYSQL_USER: clarusway
             MYSQL_PASSWORD: Clarusway
