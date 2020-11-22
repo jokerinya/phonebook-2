@@ -47,5 +47,12 @@ pipeline{
                 sh "docker tag jokerinya/ilkrepo 176153467060.dkr.ecr.us-east-1.amazonaws.com/jokerinya/ilkrepo:latest"
             }
         }
+        stage('push'){
+            agent any
+            steps{
+                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 176153467060.dkr.ecr.us-east-1.amazonaws.com"
+                sh "docker push 176153467060.dkr.ecr.us-east-1.amazonaws.com/jokerinya/ilkrepo:latest"
+            }
+        }
     }
 }
