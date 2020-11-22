@@ -6,7 +6,7 @@ pipeline{
         MYSQL_DATABASE_USER = "admin"
         MYSQL_DATABASE_DB = "phonebook"
         MYSQL_DATABASE_PORT = 3306
-        DENEME = "dENEME"
+        PATH="/usr/local/bin/:${env.PATH}"
     }
     stages{
         stage("compile"){
@@ -52,6 +52,13 @@ pipeline{
             steps{
                 sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 176153467060.dkr.ecr.us-east-1.amazonaws.com"
                 sh "docker push 176153467060.dkr.ecr.us-east-1.amazonaws.com/jokerinya/ilkrepo:latest"
+            }
+        }
+        stage('compose'){
+            agent any
+            steps {
+                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 176153467060.dkr.ecr.us-east-1.amazonaws.com"
+                sh "docker-compose up -d"
             }
         }
     }
