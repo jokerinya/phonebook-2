@@ -40,5 +40,12 @@ pipeline{
                 }
             }
         }
+        stage('build'){
+            agent any
+            steps{
+                sh "docker build -t jokerinya/ilkrepo ."
+                sh "docker tag jokerinya/ilkrepo 176153467060.dkr.ecr.us-east-1.amazonaws.com/jokerinya/ilkrepo:latest"
+            }
+        }
     }
 }
